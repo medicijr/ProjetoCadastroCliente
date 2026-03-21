@@ -22,6 +22,10 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
     public void adicionarEndereco(Endereco endereco) {
         this.enderecos.add(endereco);
     }
