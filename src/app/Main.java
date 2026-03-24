@@ -81,14 +81,14 @@ public class Main {
             switch (opcao) {
 
                 case 1:
-                    System.out.println("Codigo:");
+                    System.out.println("Informe seu Codigo:");
                     int codigo = t.nextInt();
                     t.nextLine();
 
                     // 🔹 EMAIL VALIDADO
                     String email;
                     do {
-                        System.out.println("Email:");
+                        System.out.println("Informe seu Email:");
                         email = t.next();
                         if (!Validador.validarEmail(email)) {
                             System.out.println("Email inválido!");
@@ -98,7 +98,7 @@ public class Main {
                     // 🔹 TELEFONE VALIDADO
                     String telefone;
                     do {
-                        System.out.println("Telefone:");
+                        System.out.println("Informe seu Telefone:");
                         telefone = t.next();
                         if (!Validador.validarTelefone(telefone)) {
                             System.out.println("Telefone inválido!");
@@ -115,7 +115,7 @@ public class Main {
                         }
                     } while (!Validador.validarData(data));
 
-                    System.out.println("Nome:");
+                    System.out.println("Informe seu Nome:");
                     String nome = t.next();
                     t.nextLine();
 
