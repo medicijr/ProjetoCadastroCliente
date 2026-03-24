@@ -49,6 +49,8 @@ public class Cliente {
                 ", Nome= " + nome +
                 ", Email= " + email +
                 ", Telefone= " + telefone +
-                ", DataNascimento= " + dataNascimento ;
+                ", DataNascimento= " + dataNascimento +
+                "\nEnderecos= " + enderecos +
+                "\nCartoes= " + cartoes;
     }
 }

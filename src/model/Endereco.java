@@ -8,7 +8,7 @@ public class Endereco {
     private String complemento;
     private String CEP;
 
-    public Endereco(int id, TipoLogradouro tipoLogradouro, String logradouro, int numero, String complemento, String CEP) {
+    public Endereco(int id, TipoLogradouro tipo, String logradouro, int numero, String complemento, String CEP) {
         this.id = id;
         this.tipoLogradouro = tipoLogradouro;
         this.logradouro = logradouro;
@@ -67,7 +67,7 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "id= " + id +
+        return "Id= " + id +
                 ", TipoLogradouro= " + tipoLogradouro +
                 ", Logradouro= " + logradouro +
                 ", Numero= " + numero +
