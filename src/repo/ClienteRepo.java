@@ -12,7 +12,7 @@ public class ClienteRepo {
         clientes.add(cliente);
     }
     public List <Cliente> listar(){
-        if (clientes != null){
+        if (clientes.isEmpty()){
             System.out.println("Nao tem cliente na lista");
         }
         return clientes;

@@ -1,6 +1,9 @@
 package app;
 
+import model.CartaoPagamento;
 import model.Cliente;
+import model.Endereco;
+import model.TipoLogradouro;
 import repo.ClienteRepo;
 import util.Validador;
 
@@ -8,6 +11,54 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static Endereco cadastrarEndereco(Scanner t) {
+
+        System.out.println("Tipo (RUA, AV, TR, AL, PR):");
+        String tipoStr = t.nextLine();
+
+        TipoLogradouro tipo = TipoLogradouro.valueOf(tipoStr.toUpperCase());
+
+        System.out.println("-------------------------------INFORME SEU ENDEREÇO-------------------------------");
+
+        System.out.println("Informe seu id:");
+        int tipoId = t.nextInt();
+        t.nextLine();
+
+        System.out.println("Informe seu logradouro: ");
+        String tipoLogradouro = t.nextLine();
+
+        System.out.println("Informe seu numero: ");
+        int tipoNumero = t.nextInt();
+        t.nextLine();
+
+        System.out.println("Informe seu complemento: ");
+        String tipoComplemento = t.nextLine();
+
+        System.out.println("Informe seu CEP: ");
+        String tipoCep = t.nextLine();
+
+        return new Endereco(tipoId, tipo, tipoLogradouro, tipoNumero, tipoComplemento, tipoCep);
+    }
+
+    public static CartaoPagamento adicionarCartao(Scanner t){
+
+        System.out.println("Informe o numero do cartao: ");
+        long numeroCartao = t.nextLong();
+
+        System.out.println("Informe o codigo verificador do cartao: ");
+        int codVerif = t.nextInt();
+        t.nextLine();
+
+        System.out.println("Informe o ano de validade do cartao: ");
+        int anoValid = t.nextInt();
+        t.nextLine();
+
+        System.out.println("Informe o mes de validade do cartao: ");
+        int mesValid = t.nextInt();
+        t.nextLine();
+
+        return new CartaoPagamento(numeroCartao, codVerif, anoValid, mesValid);
+    }
     public static void main(String[] args) {
 
         Scanner t = new Scanner(System.in);
@@ -25,12 +76,14 @@ public class Main {
             System.out.println("5 - Sair");
 
             opcao = t.nextInt();
+            t.nextLine();
 
             switch (opcao) {
 
                 case 1:
                     System.out.println("Codigo:");
                     int codigo = t.nextInt();
+                    t.nextLine();
 
                     // 🔹 EMAIL VALIDADO
                     String email;
@@ -64,11 +117,20 @@ public class Main {
 
                     System.out.println("Nome:");
                     String nome = t.next();
+                    t.nextLine();
 
                     Cliente cliente = new Cliente(codigo, nome, email, telefone, data);
                     repo.salvar(cliente);
 
                     System.out.println("Cliente cadastrado!");
+
+                    Endereco endereco = cadastrarEndereco(t);
+                    cliente.adicionarEndereco(endereco);
+
+
+                    CartaoPagamento cartaoPagamento = adicionarCartao(t);
+                    cliente.adicionarCartao(cartaoPagamento);
+
                     break;
 
                 case 2:
